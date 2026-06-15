@@ -1,0 +1,25 @@
+@import '../../styles/variables';
+
+.dashboard {
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: $text-primary;
+    margin-bottom: 40px;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+    margin-bottom: 40px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

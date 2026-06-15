@@ -1,0 +1,153 @@
+@import '../../styles/variables';
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $navbar-height;
+    background: $white;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    gap: 24px;
+    box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+    z-index: 100;
+
+    &__logo {
+        width: $sidebar-width;
+        flex-shrink: 0;
+
+        img {
+            height: 35px;
+        }
+    }
+
+    &__search {
+        flex: 1;
+        max-width: 400px;
+        display: flex;
+        border: 1px solid $border;
+        border-radius: $border-radius;
+        overflow: hidden;
+
+        input {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 14px;
+            color: $text-primary;
+            background: $white;
+
+            &::placeholder {
+                color: $text-light;
+            }
+        }
+    }
+
+    &__search-btn {
+        padding: 0 20px;
+        background: $primary;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &__chevron {
+        background: none;
+        display: flex;
+        align-items: center;
+        color: $text-primary;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        position: relative;
+    }
+
+    &__user-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: $white;
+        border-radius: $border-radius;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        min-width: 160px;
+        padding: 8px 0;
+        z-index: 200;
+
+        &-item {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background: none;
+            color: $text-secondary;
+            font-size: 14px;
+            text-align: left;
+
+            &:hover {
+                background: rgba(57, 205, 204, 0.06);
+                color: $text-primary;
+            }
+
+            &--danger {
+                color: $danger;
+
+                &:hover {
+                    background: rgba(228, 3, 59, 0.06);
+                }
+            }
+        }
+    }
+
+    &__right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+    &__docs {
+        color: $text-primary;
+        font-size: 16px;
+        text-decoration: underline;
+    }
+
+    &__bell {
+        background: none;
+        color: $text-primary;
+        font-size: 20px;
+        display: flex;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        color: $primary-dark;
+        font-weight: 500;
+    }
+
+    &__avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #ccc;
+    }
+
+    &__username {
+        font-size: 16px;
+        font-weight: 500;
+        color: $primary-dark;
+    }
+}
