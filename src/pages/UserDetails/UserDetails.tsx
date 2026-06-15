@@ -67,16 +67,6 @@ const UserDetails: React.FC = () => {
     );
   }
 
-  const getStatusClass = (status: string) => {
-    switch (status) {
-      case 'active': return 'status--active';
-      case 'inactive': return 'status--inactive';
-      case 'pending': return 'status--pending';
-      case 'blacklisted': return 'status--blacklisted';
-      default: return '';
-    }
-  };
-
   const tabs = [
     'General Details',
     'Documents',
