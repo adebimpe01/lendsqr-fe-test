@@ -42,7 +42,8 @@ const Users: React.FC = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3001/users');
+        const API_URL = process.env.REACT_APP_API_URL;
+        const response = await fetch(`${API_URL}/users`);
         if (!response.ok) throw new Error('Failed to fetch users');
         const data = await response.json();
         setUsers(data);

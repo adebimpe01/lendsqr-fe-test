@@ -14,7 +14,8 @@ const Dashboard: React.FC = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch('http://localhost:3001/users');
+                const API_URL = process.env.REACT_APP_API_URL;
+                const response = await fetch(`${API_URL}/users`);
                 const users = await response.json();
                 setStats({
                     total: users.length,
