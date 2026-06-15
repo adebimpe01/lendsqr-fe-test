@@ -27,9 +27,14 @@ const UserDetails: React.FC = () => {
 
                 // Fetch from API
                 const API_URL = process.env.REACT_APP_API_URL;
-                const response = await fetch(`${API_URL}/users`);
+
+                if (!API_URL) {
+                    throw new Error("API_URL is missing in environment variables");
+                }
+                const response = await fetch(`${API_URL}/users/${id}`);
                 if (!response.ok) throw new Error('User not found');
                 const data = await response.json();
+                setUser(data);
 
                 // Save to localStorage
                 localStorage.setItem(`user_${id}`, JSON.stringify(data));

@@ -15,7 +15,16 @@ const Dashboard: React.FC = () => {
         const fetchStats = async () => {
             try {
                 const API_URL = process.env.REACT_APP_API_URL;
+                if (!API_URL) {
+                    throw new Error("REACT_APP_API_URL is missing in production");
+                }
+
                 const response = await fetch(`${API_URL}/users`);
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch users");
+                }
+
                 const users = await response.json();
                 setStats({
                     total: users.length,
