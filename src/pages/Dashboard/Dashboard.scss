@@ -6,6 +6,11 @@
     font-weight: 500;
     color: $text-primary;
     margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
   }
 
   &__stats {
@@ -16,10 +21,12 @@
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
       grid-template-columns: 1fr;
+      gap: 12px;
     }
   }
 }
