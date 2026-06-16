@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import './Layout.scss';
@@ -9,10 +9,16 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, onOrgChange }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="layout">
-      <Navbar />
-      <Sidebar onOrgChange={onOrgChange} />
+      <Navbar onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
+      <Sidebar
+        onOrgChange={onOrgChange}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
       <main className="layout__main">
         {children}
       </main>

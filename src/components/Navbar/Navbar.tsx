@@ -1,15 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FiBell, FiSearch, FiChevronDown } from 'react-icons/fi';
+import { FiBell, FiSearch, FiChevronDown, FiMenu } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.scss';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onMenuToggle?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onMenuToggle }) => {
   const [search, setSearch] = useState('');
   const [showUserMenu, setShowUserMenu] = useState(false);
   const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -26,6 +29,11 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar">
+      {/* Hamburger — mobile only */}
+      <button className="navbar__hamburger" onClick={onMenuToggle}>
+        <FiMenu size={22} />
+      </button>
+
       <div className="navbar__logo">
         <img src="/logo.svg" alt="Lendsqr" />
       </div>
@@ -62,12 +70,8 @@ const Navbar: React.FC = () => {
 
           {showUserMenu && (
             <div className="navbar__user-menu">
-              <button className="navbar__user-menu-item">
-                Profile
-              </button>
-              <button className="navbar__user-menu-item">
-                Settings
-              </button>
+              <button className="navbar__user-menu-item">Profile</button>
+              <button className="navbar__user-menu-item">Settings</button>
               <button
                 className="navbar__user-menu-item navbar__user-menu-item--danger"
                 onClick={handleLogout}

@@ -14,12 +14,34 @@
     box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
     z-index: 100;
 
+    @media (max-width: 768px) {
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+    &__hamburger {
+        display: none;
+        background: none;
+        color: $text-primary;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        @media (max-width: 768px) {
+            display: flex;
+        }
+    }
+
     &__logo {
         width: $sidebar-width;
         flex-shrink: 0;
 
         img {
             height: 35px;
+        }
+
+        @media (max-width: 768px) {
+            width: auto;
         }
     }
 
@@ -42,6 +64,10 @@
                 color: $text-light;
             }
         }
+
+        @media (max-width: 480px) {
+            display: none; // hide search on very small screens to save space
+        }
     }
 
     &__search-btn {
@@ -58,11 +84,32 @@
         }
     }
 
-    &__chevron {
-        background: none;
+    &__right {
+        margin-left: auto;
         display: flex;
         align-items: center;
+        gap: 32px;
+
+        @media (max-width: 768px) {
+            gap: 16px;
+        }
+    }
+
+    &__docs {
         color: $text-primary;
+        font-size: 16px;
+        text-decoration: underline;
+
+        @media (max-width: 480px) {
+            display: none;
+        }
+    }
+
+    &__bell {
+        background: none;
+        color: $text-primary;
+        font-size: 20px;
+        display: flex;
     }
 
     &__user {
@@ -71,6 +118,8 @@
         gap: 12px;
         cursor: pointer;
         position: relative;
+        color: $primary-dark;
+        font-weight: 500;
     }
 
     &__user-menu {
@@ -108,33 +157,11 @@
         }
     }
 
-    &__right {
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        gap: 32px;
-    }
-
-    &__docs {
-        color: $text-primary;
-        font-size: 16px;
-        text-decoration: underline;
-    }
-
-    &__bell {
+    &__chevron {
         background: none;
-        color: $text-primary;
-        font-size: 20px;
-        display: flex;
-    }
-
-    &__user {
         display: flex;
         align-items: center;
-        gap: 12px;
-        cursor: pointer;
-        color: $primary-dark;
-        font-weight: 500;
+        color: $text-primary;
     }
 
     &__avatar {
@@ -143,11 +170,20 @@
         border-radius: 50%;
         object-fit: cover;
         background: #ccc;
+
+        @media (max-width: 480px) {
+            width: 36px;
+            height: 36px;
+        }
     }
 
     &__username {
         font-size: 16px;
         font-weight: 500;
         color: $primary-dark;
+
+        @media (max-width: 480px) {
+            display: none;
+        }
     }
 }

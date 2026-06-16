@@ -11,6 +11,20 @@
     overflow-y: auto;
     padding: 20px 0;
     z-index: 99;
+    transition: transform 0.3s ease;
+
+    // Hidden by default on mobile
+    @media (max-width: 768px) {
+        transform: translateX(-100%);
+        width: 260px;
+    }
+
+    // Shown when open
+    &--open {
+        @media (max-width: 768px) {
+            transform: translateX(0);
+        }
+    }
 
     &__org {
         position: relative;
@@ -57,7 +71,6 @@
             }
         }
     }
-
 
     &__org-text {
         flex: 1;
@@ -119,7 +132,18 @@
             color: $text-primary;
             border-left: 3px solid $primary;
         }
+    }
+}
 
+// Overlay behind sidebar on mobile
+.sidebar-overlay {
+    display: none;
 
+    @media (max-width: 768px) {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 98;
     }
 }
