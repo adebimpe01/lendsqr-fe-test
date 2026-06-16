@@ -25,10 +25,6 @@ interface SidebarGroup {
     items: SidebarItem[];
 }
 
-interface SidebarProps {
-    onOrgChange?: (org: string) => void;
-}
-
 const sidebarGroups: SidebarGroup[] = [
     {
         items: [
@@ -83,7 +79,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onOrgChange, isOpen, onClose }) => {
             {isOpen && (
                 <div className="sidebar-overlay" onClick={onClose} />
             )}
-            <aside className="sidebar">
+            <aside className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}>
                 <div className="sidebar__org" onClick={() => setShowOrgMenu(!showOrgMenu)}>
                     <FiSliders size={16} />
                     <span>{selectedOrg}</span>
